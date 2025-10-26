@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="emerald-drift">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Carlsberg Field Lab — Physics of Motion</title>
+<meta name="description" content="A modern residency reviving Carlsberg’s research spirit: public-facing experiments in motion, resonance, and perception." />
+<meta name="robots" content="noindex,nofollow" />
+<meta property="og:title" content="Carlsberg Field Lab — Physics of Motion" />
+<meta property="og:description" content="Where science once brewed yeast, we now brew rhythm. Open-lab physics × art at Carlsberg." />
+<meta property="og:type" content="website" />
+<meta name="color-scheme" content="dark light" />
+<style>
+  :root {
+    --bg: #0b1210;
+    --ink: #e9f5ee;
+    --muted: #b9d3c6;
+    --emerald: #21c07b;
+    --emerald-soft: #1a9e66;
+    --grid: rgba(255,255,255,0.06);
+    --card: rgba(255,255,255,0.06);
+    --ring: rgba(33,192,123,0.45);
+    --focus: 2px solid var(--emerald);
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f5faf7; --ink:#0c1612; --muted:#35584a;
+      --card: rgba(0,0,0,0.04); --grid: rgba(0,0,0,0.06);
+      --ring: rgba(33,192,123,0.25);
+    }
+  }
+  * { box-sizing:border-box }
+  html,body { height:100% }
+  body {
+    margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    background: radial-gradient(1400px 700px at 50% -10%, rgba(33,192,123,0.18), transparent 50%), var(--bg);
+    color: var(--ink);
+    line-height:1.45;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  a { color: var(--emerald); text-decoration: none }
+  a:focus-visible, button:focus-visible { outline: var(--focus); outline-offset: 3px; border-radius: 6px }
+  header, main, footer { width: min(1120px, 92vw); margin: 0 auto }
+  header { padding: 28px 0 8px }
+  .brand { display:flex; align-items:center; gap:14px }
+  .glyph { width:22px; height:22px; border:1px solid var(--ring); border-radius:50%; position:relative }
+  .glyph::after { content:""; position:absolute; inset:3px; border-radius:50%; background: radial-gradient(circle at 60% 40%, var(--emerald), transparent 60%) }
+  nav { margin-left:auto; display:flex; gap:16px }
+  .row { display:flex; flex-wrap:wrap; gap:16px; align-items:center }
+  .hero {
+    padding: 64px 0 28px; position:relative; overflow:hidden;
+  }
+  .title { font-size: clamp(28px, 4.4vw, 56px); line-height:1.02; letter-spacing: -0.02em; margin: 4px 0 12px }
+  .subtitle { color: var(--muted); font-size: clamp(14px, 1.6vw, 18px) }
+  .cta { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px }
+  .btn {
+    appearance:none; border:1px solid var(--emerald-soft); background:transparent; color:var(--ink);
+    padding:10px 14px; border-radius:10px; font-weight:600; cursor:pointer;
+    transition: transform .12s ease, background .12s ease, border-color .12s ease;
+  }
+  .btn[aria-current="page"]{ background:var(--card) }
+  .btn:hover { transform: translateY(-1px); border-color: var(--emerald) }
+  .grid {
+    position:absolute; inset: -80px -8vw 0; pointer-events:none;
+    background: linear-gradient(0deg, transparent, transparent 96%, var(--grid) 96%) 0 0/100% 28px,
+                linear-gradient(90deg, transparent, transparent 96%, var(--grid) 96%) 0 0/28px 100%;
+    mask-image: radial-gradient(1200px 600px at 50% -10%, black, transparent 60%);
+  }
+  .cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:14px; margin:24px 0 12px }
+  .card {
+    background: var(--card); border: 1px solid transparent; padding:16px 14px; border-radius:14px;
+    transition: border-color .16s ease, transform .12s ease, background .18s ease;
+  }
+  .card:hover { border-color: var(--ring); transform: translateY(-1px) }
+  h2 { font-size: clamp(18px, 2.2vw, 24px); margin: 16px 0 8px }
+  h3 { font-size: clamp(16px, 2vw, 20px); margin: 12px 0 6px }
+  ul { margin: 8px 0 0 18px; padding:0 }
+  .pipe { opacity:.6; margin: 0 8px }
+  .tiny { font-size: 12.5px; opacity:.8 }
+  .note { border-left: 3px solid var(--emerald); padding: 10px 12px; background: var(--card); border-radius: 8px }
+  footer { padding: 36px 0 56px; color: var(--muted) }
+  .tag { display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border-radius: 999px; border:1px solid var(--ring); background: var(--card) }
+  /* subtle “alive” shimmer */
+  .alive {
+    position: relative; isolation:isolate;
+  }
+  .alive::after {
+    content:""; position:absolute; inset:-2px; z-index:-1; border-radius:16px;
+    background: conic-gradient(from 180deg at 50% 50%, rgba(33,192,123,0.0), rgba(33,192,123,0.10), rgba(33,192,123,0.0) 65%);
+    filter: blur(18px); opacity:.6; animation: drift 10s linear infinite;
+  }
+  @keyframes drift { to { transform: rotate(360deg) } }
+  /* accessibility helpers */
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0 }
+</style>
+</head>
+<body>
+<header class="row">
+  <div class="brand">
+    <span class="glyph" aria-hidden="true"></span>
+    <strong>Carlsberg Field Lab</strong>
+    <span class="pipe">|</span>
+    <span class="tiny">Physics of Motion</span>
+  </div>
+  <nav class="row" aria-label="Site">
+    <a class="btn" href="#vision">Vision</a>
+    <a class="btn" href="#program">Program</a>
+    <a class="btn" href="#partners">Partners</a>
+    <a class="btn" href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="grid" aria-hidden="true"></div>
+  <main>
+    <div class="tag alive" role="note" aria-label="Pilot residency">
+      <span aria-hidden="true">🧪</span> Pilot residency & open-lab (proposal)
+    </div>
+    <h1 class="title">Where science once brewed yeast,<br/>we now brew <em>rhythm</em>.</h1>
+    <p class="subtitle">A modern residency reviving Carlsberg’s research spirit: public-facing experiments in <strong>motion, resonance, and perception</strong> — physics you can hear, see, and feel.</p>
+    <div class="cta">
+      <a class="btn" href="#program" aria-label="Jump to Program">Explore Program →</a>
+      <a class="btn" href="#contact" aria-label="Jump to Contact">Partner with us</a>
+    </div>
+
+    <div id="vision" class="cards" style="margin-top:28px">
+      <article class="card">
+        <h2>Vision</h2>
+        <p>Reawaken Carlsberg’s early-20th-century lab ethos for today: **tangible physics** for a public audience. Chladni plates, pendulums, light-tone interference — industrial warmth, emerald calm.</p>
+        <p class="tiny">Value: civic curiosity · accessible science · cultural resonance</p>
+      </article>
+      <article class="card">
+        <h2>Core Idea</h2>
+        <ul>
+          <li>Residency (2–5 days) → open-lab weekend</li>
+          <li>Live demos: vibration, flow, time perception</li>
+          <li>Evening salon: short talks + sound performance</li>
+          <li>Outcome: mini-publication or short film</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Atmosphere</h2>
+        <p>Copper, glass, and soft green. Oscilloscopes + water resonance trays. Safe, touchable experiments. Guided by scientists and artists together.</p>
+      </article>
+    </div>
+
+    <div id="program" class="cards">
+      <article class="card">
+        <h3>Open-Lab Stations</h3>
+        <ul>
+          <li><strong>Sound→Sand:</strong> Chladni plates mapping frequency to geometry</li>
+          <li><strong>Pendulum Field:</strong> Coupled motion and phase patterns</li>
+          <li><strong>Light & Tone:</strong> Visualizing beats, interference, and drift</li>
+          <li><strong>Perception Desk:</strong> time dilation & rhythm illusions</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Evening Salon</h3>
+        <ul>
+          <li>10-minute micro-talks (physics × culture)</li>
+          <li>Short set: **Motion** instrument (visual loops as energy “recipes”)</li>
+          <li>Audience Q&A among the instruments</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Output</h3>
+        <ul>
+          <li>Photo essay / 6–10 page PDF</li>
+          <li>3–5 minute recap film</li>
+          <li>Public notes at <a href="https://read.plnt.earth" target="_blank" rel="noreferrer">read.plnt.earth</a></li>
+        </ul>
+      </article>
+    </div>
+
+    <div id="partners" class="cards">
+      <article class="card">
+        <h2>Partners & Roles</h2>
+        <ul>
+          <li><strong>Host:</strong> Carlsberg (space, heritage context)</li>
+          <li><strong>Science:</strong> local university physics / acoustics</li>
+          <li><strong>Art & Motion:</strong> invited artists / Miss Monique (schedule-permitting)</li>
+          <li><strong>Public Interface:</strong> <a href="https://motion.plnt.earth" target="_blank" rel="noreferrer">motion.plnt.earth</a> (visual loops) · <a href="https://wonder.plnt.earth" target="_blank" rel="noreferrer">wonder.plnt.earth</a> (intent) · <a href="https://read.plnt.earth" target="_blank" rel="noreferrer">read.plnt.earth</a> (archive)</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Safety & Access</h2>
+        <div class="note">
+          Clear signage · gentle volume policy · earplugs available · wheelchair routes · seated viewing areas · low-scent materials · photography consent zone.
+        </div>
+      </article>
+      <article class="card">
+        <h2>Timeline (Proposal)</h2>
+        <ul>
+          <li>Month 0–1: Planning & partner lock</li>
+          <li>Month 2: Build & test stations</li>
+          <li>Month 3: Residency + public weekend</li>
+        </ul>
+      </article>
+    </div>
+
+    <div id="contact" class="cards">
+      <article class="card">
+        <h2>Contact</h2>
+        <p>Interested in hosting or co-creating the pilot?</p>
+        <p><strong>Tristan White</strong><br/>
+        <a href="mailto:t@tristanwhite.co">t@tristanwhite.co</a></p>
+        <p class="tiny">Press/Program notes available on request.</p>
+      </article>
+      <article class="card">
+        <h2>Notes for Hosts</h2>
+        <ul>
+          <li>Space: 150–300 m², power + basic tables</li>
+          <li>Insurance / safety liaison</li>
+          <li>Evening salon seating (80–120)</li>
+          <li>Optional: heritage tour tie-in</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>For Context</h2>
+        <p class="tiny">This pilot complements the Illumina ecosystem: Wonder (why), Read (understand), Motion (do). It’s built for public curiosity first.</p>
+      </article>
+    </div>
+  </main>
+</section>
+
+<footer>
+  <p class="tiny">© <span id="y"></span> Illumina · Proposal site for conversation purposes. This page is intentionally minimal, single-file, and private (noindex).</p>
+</footer>
+
+<script>
+  // small niceties without console logs
+  (function(){
+    var y = document.getElementById('y');
+    if (y) y.textContent = new Date().getFullYear();
+    // reduce-motion respect: remove shimmer if user prefers
+    var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq.matches) {
+      var alive = document.querySelectorAll('.alive::after'); // selector placeholder (no-op)
+    }
+  })();
+</script>
+</body>
+</html>
