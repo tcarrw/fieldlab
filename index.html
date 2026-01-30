@@ -79,11 +79,12 @@ display:flex;
 align-items:center;
 justify-content:center;
 cursor:pointer;
-transition:opacity 0.3s ease;
+transition:opacity 0.3s ease, visibility 0.3s ease;
 }
 
 #playOverlay.hidden{
 opacity:0;
+visibility:hidden;
 pointer-events:none;
 }
 
@@ -164,6 +165,29 @@ h3{font-size:clamp(16px,2vw,20px); margin:12px 0 6px}
 ul{margin:8px 0 0 18px; padding:0}
 .note{border-left:3px solid var(–green); padding:10px 12px; background:rgba(10,17,16,0.5); border-radius:8px}
 footer{padding:36px 0 56px; color:var(–muted)}
+
+#pauseBtn{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+z-index:5000;
+padding:8px 16px;
+background:rgba(10,17,16,0.85);
+border:1px solid var(–green-soft);
+border-radius:20px;
+color:var(–ink);
+font-size:12px;
+cursor:pointer;
+backdrop-filter:blur(8px);
+display:none;
+}
+
+#pauseBtn:hover{
+border-color:var(–green);
+background:rgba(10,17,16,0.95);
+}
+
 /* accessibility helpers */
 .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
 
@@ -179,12 +203,7 @@ nav{width:100%; justify-content:center;}
 <!-- Video Background -->
 
 <div id="videoBackground">
-  <iframe
-    id="bgPlayer"
-    src="https://www.youtube.com/embed/-JyWxwy3Iqs?autoplay=0&loop=1&playlist=-JyWxwy3Iqs&controls=0&mute=1&playsinline=1"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen></iframe>
+  <div id="bgPlayer"></div>
 </div>
 
 <!-- Play Overlay -->
@@ -378,20 +397,91 @@ nav{width:100%; justify-content:center;}
   <p class="tiny" style="opacity:0.6;">© <span id="y"></span> Illumina · Proposal site for conversation purposes. This page is intentionally minimal, single-file, and private (noindex).</p>
 </footer>
 
+<button id="pauseBtn">⏸ Pause</button>
+
 <script>
+// Load YouTube IFrame API
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+var playerReady = false;
+var hasStarted = false;
+
+// YouTube API callback
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('bgPlayer', {
+    height: '100%',
+    width: '100%',
+    videoId: '-JyWxwy3Iqs',
+    playerVars: {
+      autoplay: 0,
+      controls: 0,
+      loop: 1,
+      playlist: '-JyWxwy3Iqs',
+      playsinline: 1,
+      mute: 1,
+      rel: 0,
+      modestbranding: 1,
+      fs: 0,
+      iv_load_policy: 3
+    },
+    events: {
+      'onReady': function(event) {
+        playerReady = true;
+      }
+    }
+  });
+}
+
 (function(){
   var y=document.getElementById('y'); 
   if(y){ y.textContent=new Date().getFullYear(); }
   
-  // Play overlay handling
   var overlay = document.getElementById('playOverlay');
-  var bgPlayer = document.getElementById('bgPlayer');
+  var pauseBtn = document.getElementById('pauseBtn');
+  var isPaused = false;
   
+  // Play overlay - only responds once
   overlay.addEventListener('click', function(){
+    if(hasStarted) return; // Ignore additional clicks
+    hasStarted = true;
+    
     overlay.classList.add('hidden');
-    // Unmute and play video
-    var src = bgPlayer.src;
-    bgPlayer.src = src.replace('mute=1', 'mute=0').replace('autoplay=0', 'autoplay=1');
+    pauseBtn.style.display = 'block';
+    
+    // Wait for player to be ready, then unmute and play
+    var attempts = 0;
+    var checkReady = setInterval(function(){
+      attempts++;
+      if(playerReady && player && player.unMute && player.playVideo){
+        player.unMute();
+        player.setVolume(100);
+        player.playVideo();
+        clearInterval(checkReady);
+      } else if(attempts > 50) { // Timeout after 5 seconds
+        clearInterval(checkReady);
+        console.error('Player failed to initialize');
+      }
+    }, 100);
+  });
+  
+  // Pause/Play button
+  pauseBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(!hasStarted || !player) return;
+    
+    if(isPaused){
+      player.playVideo();
+      pauseBtn.textContent = '⏸ Pause';
+      isPaused = false;
+    } else {
+      player.pauseVideo();
+      pauseBtn.textContent = '▶ Play';
+      isPaused = true;
+    }
   });
 })();
 </script>
