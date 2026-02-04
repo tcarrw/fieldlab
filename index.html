@@ -13,12 +13,12 @@
 <style>
   /* ===== Green Pearl Theme ===== */
   :root{
-    --bg:#0a1110;            /* deep green-black */
-    --ink:#eef7f2;           /* pearl ink */
-    --muted:#b9d8c9;         /* seafoam text */
-    --pearl:#e7fff2;         /* pearlescent highlight */
-    --green:#20bf7a;         /* primary green */
-    --green-soft:#169a61;    /* hover green */
+    --bg:#0a1110;
+    --ink:#eef7f2;
+    --muted:#b9d8c9;
+    --pearl:#e7fff2;
+    --green:#20bf7a;
+    --green-soft:#169a61;
     --ring:rgba(32,191,122,.45);
     --card:rgba(255,255,255,.06);
     --grid:rgba(255,255,255,.06);
@@ -187,6 +187,40 @@
     background:rgba(10,17,16,0.95);
   }
   
+  .fortnight-style{
+    text-align:center;
+    padding:24px;
+    background:rgba(32,191,122,0.08);
+    border:1px solid var(--ring);
+    border-radius:14px;
+    margin:16px 0;
+  }
+  
+  .fortnight-style h3{
+    font-size:clamp(20px,3vw,32px);
+    margin:0 0 16px;
+    font-weight:800;
+    letter-spacing:-0.02em;
+  }
+  
+  .fortnight-style .artist-name{
+    font-size:clamp(24px,4vw,48px);
+    font-weight:900;
+    background:linear-gradient(135deg,var(--green),var(--pearl));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    display:block;
+    margin:8px 0;
+    letter-spacing:-0.03em;
+  }
+  
+  .fortnight-style .subtitle-text{
+    color:var(--muted);
+    font-size:clamp(13px,1.5vw,16px);
+    margin:12px 0 0;
+    font-style:italic;
+  }
+  
   /* accessibility helpers */
   .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
   
@@ -317,36 +351,53 @@
       </article>
     </div>
 
-    <!-- Public Interfaces -->
+    <!-- Public Interfaces & Special Invitations Combined -->
     <div class="cards">
       <article class="card">
         <h2>Public Interfaces</h2>
+        <p style="margin-bottom:12px;color:var(--muted);font-size:14px;">
+          Digital spaces where physics becomes play, wonder becomes learning, and curiosity finds community.
+        </p>
         <ul>
-          <li><a href="https://motion.plnt.earth">motion.plnt.earth</a></li>
-          <li><a href="https://wonder.plnt.earth">wonder.plnt.earth</a></li>
-          <li><a href="https://read.plnt.earth">read.plnt.earth</a></li>
-          <li><a href="https://school.plnt.earth">school.plnt.earth</a></li>
-          <li><a href="https://alter.fire.plnt.earth">alter.fire.plnt.earth</a></li>
+          <li><a href="https://motion.plnt.earth">motion.plnt.earth</a> — Sound, rhythm, and resonance experiments</li>
+          <li><a href="https://wonder.plnt.earth">wonder.plnt.earth</a> — Questions worth asking</li>
+          <li><a href="https://read.plnt.earth">read.plnt.earth</a> — Deep dives and context</li>
+          <li><a href="https://school.plnt.earth">school.plnt.earth</a> — Learning paths</li>
+          <li><a href="https://alter.fire.plnt.earth">alter.fire.plnt.earth</a> — Transformation space</li>
+          <li><a href="https://jar.plnt.earth">jar.plnt.earth</a> — Collection & curation</li>
+          <li><a href="https://center.plnt.earth">center.plnt.earth</a> — Community hub</li>
         </ul>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--ring);">
+          <p style="font-size:13px;color:var(--muted);margin:0 0 8px;"><strong>For Fun:</strong></p>
+          <ul style="font-size:13px;">
+            <li><a href="https://boop.plnt.earth">boop.plnt.earth</a> — Screensaver: time & moon</li>
+            <li><a href="https://boop.plnt.earth/honey">boop/honey</a> — Illumina Everything Box (decoder & messages, a nod to the knitting done by women in WW1 and WW2)</li>
+          </ul>
+        </div>
       </article>
+      
       <article class="card">
-        <h2>Special Invitations</h2>
-        <p>
-          This field is open to artists who work comfortably at thresholds —
-          between control and release, clarity and distortion.
-        </p>
-        <p style="margin-top:8px;">
-          <strong>ninajirachi</strong><br/>
-          <strong>Sigrid</strong><br/>
-          <strong>Doechii</strong>
-        </p>
-        <p class="tiny" style="opacity:.75;margin-top:8px;">
-          Invitation is informal, optional, and timing-aware.
-        </p>
+        <div class="fortnight-style">
+          <h3>Special Invitations</h3>
+          <p style="color:var(--muted);font-size:14px;margin:12px 0;">
+            This field is open to artists who work comfortably at thresholds —<br/>
+            between control and release, clarity and distortion.
+          </p>
+          
+          <div style="margin:24px 0;">
+            <span class="artist-name">ninajirachi</span>
+            <span class="artist-name">Sigrid</span>
+            <span class="artist-name">Doechii</span>
+          </div>
+          
+          <p class="subtitle-text">
+            Invitation is informal, optional, and timing-aware.
+          </p>
+        </div>
       </article>
     </div>
 
-    <!-- Partners / Safety -->
+    <!-- Partners / Safety / Timeline -->
     <div id="partners" class="cards">
       <article class="card">
         <h2>Partners &amp; Roles</h2>
@@ -354,23 +405,59 @@
           <li><strong>Host:</strong> Carlsberg (space, heritage context)</li>
           <li><strong>Science:</strong> local university physics / acoustics</li>
           <li><strong>Art &amp; Motion:</strong> invited artists / Miss Monique (TBC)</li>
-          <li><strong>Public Interface:</strong> <a href="https://motion.plnt.earth" target="_blank" rel="noreferrer">motion.plnt.earth</a> · <a href="https://wonder.plnt.earth" target="_blank" rel="noreferrer">wonder.plnt.earth</a> · <a href="https://read.plnt.earth" target="_blank" rel="noreferrer">read.plnt.earth</a> · <a href="https://school.plnt.earth" target="_blank" rel="noreferrer">school.plnt.earth</a> · <a href="https://jar.plnt.earth" target="_blank" rel="noreferrer">jar.plnt.earth</a> · <a href="https://center.plnt.earth" target="_blank" rel="noreferrer">center.plnt.earth</a></li>
-          <li><strong>For Fun:</strong> <a href="https://boop.plnt.earth" target="_blank" rel="noreferrer">boop.plnt.earth</a> (screensaver: time & moon) · <a href="https://boop.plnt.earth/honey" target="_blank" rel="noreferrer">boop/honey</a> (Illumina Everything Box — decoder & messages, a nod to the knitting done by women in WW1 and WW2)</li>
+          <li><strong>Design &amp; Interface:</strong> Illumina ecosystem (motion, wonder, read, school)</li>
+          <li><strong>Community:</strong> Open to physicists, artists, educators, and curious visitors</li>
         </ul>
       </article>
+      
       <article class="card">
         <h2>Safety &amp; Access</h2>
         <div class="note">
-          Gentle volume policy (≤ 85 dB sustained) · earplugs available · wheelchair routes · seated viewing areas · low-scent materials · staff-only zones clearly marked · photography consent zone.
+          <p style="margin:0 0 12px;font-weight:600;">Creating a gentle, inclusive space for scientific wonder:</p>
+          <ul style="margin:0;font-size:14px;">
+            <li><strong>Sound:</strong> Volume policy (≤ 85 dB sustained) — quieter than a busy street</li>
+            <li><strong>Hearing protection:</strong> Earplugs available at all stations</li>
+            <li><strong>Mobility:</strong> Wheelchair-accessible routes to all exhibits</li>
+            <li><strong>Comfort:</strong> Seated viewing areas at every demonstration</li>
+            <li><strong>Sensitivity:</strong> Low-scent materials (fragrance-free lab)</li>
+            <li><strong>Boundaries:</strong> Staff-only zones clearly marked</li>
+            <li><strong>Privacy:</strong> Photography consent zones (opt-in/opt-out)</li>
+          </ul>
         </div>
+        <p class="tiny" style="margin-top:12px;color:var(--muted);">
+          Physics should be accessible to everyone. These measures ensure the lab welcomes visitors with sensory sensitivities, mobility needs, and varying comfort levels with crowds and technology.
+        </p>
       </article>
+      
       <article class="card">
         <h2>Timeline (Proposal)</h2>
-        <ul>
-          <li>Month 0–1: Planning &amp; partner lock</li>
-          <li>Month 2: Build &amp; test stations</li>
-          <li>Month 3: Residency + public weekend</li>
-        </ul>
+        <div class="note" style="border-left-color:var(--pearl);">
+          <ul style="margin:0;">
+            <li><strong>Month 0–1:</strong> Planning &amp; partner confirmation</li>
+            <li><strong>Month 2:</strong> Build &amp; test stations</li>
+            <li><strong>Month 3:</strong> Residency + public weekend</li>
+          </ul>
+        </div>
+        
+        <div style="margin-top:16px;padding:14px;background:rgba(231,255,242,0.05);border-radius:10px;">
+          <p style="margin:0 0 8px;font-weight:600;font-size:15px;">What this timeline means:</p>
+          <p style="margin:0 0 12px;font-size:14px;line-height:1.6;">
+            <strong>For Carlsberg:</strong> A 3-month pilot to test heritage-science programming with minimal commitment. If successful, it becomes a recurring seasonal residency.
+          </p>
+          <p style="margin:0 0 12px;font-size:14px;line-height:1.6;">
+            <strong>For artists:</strong> A 2–5 day immersive residency (not a performance obligation) — time to explore physics experiments, collaborate with scientists, and create if inspired. The public weekend is observational, not extractive.
+          </p>
+          <p style="margin:0 0 12px;font-size:14px;line-height:1.6;">
+            <strong>For universities:</strong> A public outreach opportunity with built-in audience and documentation. Physics demos designed by researchers become accessible to non-specialists.
+          </p>
+          <p style="margin:0;font-size:14px;line-height:1.6;">
+            <strong>For the public:</strong> A free (or low-cost) weekend where you can touch Chladni plates, watch pendulums synchronize, and ask physicists questions in a brewery that once revolutionized biochemistry.
+          </p>
+        </div>
+        
+        <p class="tiny" style="margin-top:12px;opacity:0.7;">
+          <em>Depending on interest:</em> This could be a one-time experiment, a quarterly series, or the foundation for a permanent public physics lab at Carlsberg. The timeline is designed to be low-risk and high-curiosity.
+        </p>
       </article>
     </div>
 
@@ -466,13 +553,12 @@ function onYouTubeIframeAPIReady() {
   
   // Play overlay - only responds once
   overlay.addEventListener('click', function(){
-    if(hasStarted) return; // Ignore additional clicks
+    if(hasStarted) return;
     hasStarted = true;
     
     overlay.classList.add('hidden');
     pauseBtn.style.display = 'block';
     
-    // Wait for player to be ready, then unmute and play
     var attempts = 0;
     var checkReady = setInterval(function(){
       attempts++;
@@ -481,7 +567,7 @@ function onYouTubeIframeAPIReady() {
         player.setVolume(100);
         player.playVideo();
         clearInterval(checkReady);
-      } else if(attempts > 50) { // Timeout after 5 seconds
+      } else if(attempts > 50) {
         clearInterval(checkReady);
         console.error('Player failed to initialize');
       }
