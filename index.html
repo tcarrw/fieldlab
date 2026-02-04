@@ -221,18 +221,10 @@
     <span class="tiny">Physics of Motion</span>
   </div>
   <nav class="row" aria-label="Site">
-    <div style="display:flex;gap:12px;flex-wrap:wrap;width:100%;justify-content:center;">
-      <a class="btn" href="https://four.plnt.earth">for</a>
-      <a class="btn" href="https://time.plnt.earth">time</a>
-      <a class="btn" href="https://motion.plnt.earth">energy</a>
-      <a class="btn" href="https://earth.plnt.earth">earth <span style="text-decoration:line-through;opacity:0.5;font-size:11px;">matter</span></a>
-    </div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;width:100%;justify-content:center;">
-      <a class="btn" href="#vision">Vision</a>
-      <a class="btn" href="#program">Program</a>
-      <a class="btn" href="#physics">Physics</a>
-      <a class="btn" href="https://contact.plnt.earth">Contact</a>
-    </div>
+    <a class="btn" href="https://four.plnt.earth">for</a>
+    <a class="btn" href="https://time.plnt.earth">time</a>
+    <a class="btn" href="https://motion.plnt.earth">energy</a>
+    <a class="btn" href="https://earth.plnt.earth">earth</a>
   </nav>
 </header>
 
@@ -325,6 +317,35 @@
       </article>
     </div>
 
+    <!-- Public Interfaces -->
+    <div class="cards">
+      <article class="card">
+        <h2>Public Interfaces</h2>
+        <ul>
+          <li><a href="https://motion.plnt.earth">motion.plnt.earth</a></li>
+          <li><a href="https://wonder.plnt.earth">wonder.plnt.earth</a></li>
+          <li><a href="https://read.plnt.earth">read.plnt.earth</a></li>
+          <li><a href="https://school.plnt.earth">school.plnt.earth</a></li>
+          <li><a href="https://alter.fire.plnt.earth">alter.fire.plnt.earth</a></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Special Invitations</h2>
+        <p>
+          This field is open to artists who work comfortably at thresholds —
+          between control and release, clarity and distortion.
+        </p>
+        <p style="margin-top:8px;">
+          <strong>ninajirachi</strong><br/>
+          <strong>Sigrid</strong><br/>
+          <strong>Doechii</strong>
+        </p>
+        <p class="tiny" style="opacity:.75;margin-top:8px;">
+          Invitation is informal, optional, and timing-aware.
+        </p>
+      </article>
+    </div>
+
     <!-- Partners / Safety -->
     <div id="partners" class="cards">
       <article class="card">
@@ -334,7 +355,7 @@
           <li><strong>Science:</strong> local university physics / acoustics</li>
           <li><strong>Art &amp; Motion:</strong> invited artists / Miss Monique (TBC)</li>
           <li><strong>Public Interface:</strong> <a href="https://motion.plnt.earth" target="_blank" rel="noreferrer">motion.plnt.earth</a> · <a href="https://wonder.plnt.earth" target="_blank" rel="noreferrer">wonder.plnt.earth</a> · <a href="https://read.plnt.earth" target="_blank" rel="noreferrer">read.plnt.earth</a> · <a href="https://school.plnt.earth" target="_blank" rel="noreferrer">school.plnt.earth</a> · <a href="https://jar.plnt.earth" target="_blank" rel="noreferrer">jar.plnt.earth</a> · <a href="https://center.plnt.earth" target="_blank" rel="noreferrer">center.plnt.earth</a></li>
-      <li><strong>For Fun:</strong> <a href="https://boop.plnt.earth" target="_blank" rel="noreferrer">boop.plnt.earth</a> (screensaver: time & moon) · <a href="https://boop.plnt.earth/honey" target="_blank" rel="noreferrer">boop/honey</a> (Illumina Everything Box — decoder & messages, a nod to the knitting done by women in WW1 and WW2)</li>
+          <li><strong>For Fun:</strong> <a href="https://boop.plnt.earth" target="_blank" rel="noreferrer">boop.plnt.earth</a> (screensaver: time & moon) · <a href="https://boop.plnt.earth/honey" target="_blank" rel="noreferrer">boop/honey</a> (Illumina Everything Box — decoder & messages, a nod to the knitting done by women in WW1 and WW2)</li>
         </ul>
       </article>
       <article class="card">
@@ -382,14 +403,18 @@
 </section>
 
 <footer>
-  <p style="max-width:800px;margin:0 auto 16px;line-height:1.7;">
-    Like poetry — I am doing this for myself, for <a href="https://earth.plnt.earth" style="color:var(--green);font-weight:600;">Marina and her diamonds</a> and for earth. I am curious. I am careful. I am a controversy. I can lie but my intent is always good. I don't always know what I want, but I always get it in the end. That's my point.<br>
-    <span style="font-style:italic;color:var(--pearl);">* la perla</span>
+  <p>
+    Grounded on Earth.<br/>
+    A reminder from <em>No Cure For Me</em> — staying present, staying human.
   </p>
-  <p style="max-width:800px;margin:0 auto 16px;font-size:13px;line-height:1.6;color:var(--muted);">
-    <strong>PS:</strong> <a href="https://www.youtube.com/watch?v=ko70cExuzZM&list=PL2H7n7qLAdf7JlVphGcSXzzvbh9JWgUj3&index=1" target="_blank" rel="noopener" style="color:var(--green);">Songs that defend la perla</a> — I am here to help. I am looking for friends.
+  <p>
+    <a href="https://earth.plnt.earth" style="color:var(--green);font-weight:600;">
+      earth.plnt.earth
+    </a>
   </p>
-  <p class="tiny" style="opacity:0.6;">© <span id="y"></span> Illumina · Proposal site for conversation purposes. This page is intentionally minimal, single-file, and private (noindex).</p>
+  <p style="opacity:.6;margin-top:12px;">
+    © <span id="y"></span> Illumina · Field Lab
+  </p>
 </footer>
 
 <button id="pauseBtn">⏸ Pause</button>
@@ -479,6 +504,8 @@ function onYouTubeIframeAPIReady() {
     }
   });
 })();
+
+document.getElementById('y').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
